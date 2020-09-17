@@ -20,7 +20,7 @@ class CategoryController extends Controller
         $varmi = Category::whereSlug(str_slug($request->category))->first();
 
         if ($varmi){
-            toastr()->error('Bu kategori zaten mevcut..','<i class="fa fa-times-circle"></i>');
+            toastr()->error('Bu kategori zaten mevcut..','<i class="fa fa-exclamation-triangle"></i>');
             return redirect()->back();
         }
         //print_r($request->post());

@@ -65,7 +65,7 @@
                id = $(this)[0].getAttribute('article-id');
                statu = $(this).prop('checked');
 
-                $.get("{{route('admin.article.switch')}}", {id:id, statu:statu}, function(data, status){});
+                $.get("{{route('admin.DurumSwitch')}}", {id:id, statu:statu}, function(data, status){});
             })
         })
     </script>

@@ -22,6 +22,14 @@ class ArticleController extends Controller
         return view('back.articles.index', compact('articles'));
     }
 
+    public function surumSwitch(Request $request)
+    {
+        $article = Article::findOrFail($request->id);
+        $article->status = $request->statu == 'true' ? 1 : 0;
+        //toastr()->success('Başarılı.', 'Makale Başarı ile oluşturuldu.');
+        $article->save();
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -120,14 +128,6 @@ class ArticleController extends Controller
         return redirect()->route('admin.makaleler.index');
 
 
-    }
-
-    public function switch(Request $request)
-    {
-        $article = Article::findOrFail($request->id);
-        $article->status = $request->statu == 'true' ? 1 : 0;
-        //toastr()->success('Başarılı.', 'Makale Başarı ile oluşturuldu.');
-        $article->save();
     }
 
     /**
