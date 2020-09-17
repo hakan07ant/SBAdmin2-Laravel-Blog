@@ -27,7 +27,11 @@ Route::prefix('admin')->name('admin.')->middleware('isAdmin')->group(function ()
     //KATEGORI ROUTE'S
     Route::get('kategoriler','Back\CategoryController@index')->name('category.index');
     Route::post('kategoriler/create','Back\CategoryController@create')->name('category.create');
-    Route::get('/switchCategory','Back\CategoryController@switch')->name('category.switch');
+    Route::get('/kategori/status','Back\CategoryController@switch')->name('category.switch');
+    Route::get('/kategori/getData','Back\CategoryController@getData')->name('category.getdata');
+    Route::post('kategori/guncelle','Back\CategoryController@guncelle')->name('category.update');
+    Route::post('kategori/sil','Back\CategoryController@sil')->name('category.sil');
+
 
 
     //CIKIS ROUTE'S
