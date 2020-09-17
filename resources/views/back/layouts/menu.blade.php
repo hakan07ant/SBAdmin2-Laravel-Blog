@@ -32,7 +32,7 @@
             İçerik Yönetimi
         </div>
 
-        <!-- Nav Item - Pages Collapse Menu -->
+        <!-- MAKALELER -->
         <li class="nav-item @if(Request::segment(2)=='makaleler') active @endif">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                aria-expanded="true" aria-controls="collapseTwo">
@@ -51,12 +51,30 @@
             </div>
         </li>
 
-        <!-- Nav Item - Utilities Collapse Menu -->
+        <!-- KATEGORILER -->
         <li class="nav-item  @if(Request::segment(2)=='kategoriler') active @endif">
             <a class="nav-link" href="{{route('admin.category.index')}}"><i class="fas fa-fw fa-list"></i>
                 <span>Kategoriler</span>
             </a>
+        </li>
 
+        <!-- SAYFALAR -->
+        <li class="nav-item @if(Request::segment(2)=='makaleler') active @endif">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+               aria-expanded="true" aria-controls="collapseTwo">
+                <i class="fa fa-fw fa-folder-minus"></i>
+                <span>Sayfalar</span>
+            </a>
+            <div id="collapseTwo" class="collapse  @if(Request::segment(2)=='makaleler') show @endif"
+                 aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Makale İşlemleri:</h6>
+                    <a class="collapse-item @if(Request::segment(2)=='makaleler' and !Request::segment(3)) active @endif"
+                       href="{{route('admin.makaleler.index')}}">Tüm Makaleler</a>
+                    <a class="collapse-item @if(Request::segment(2)=='makaleler' and Request::segment(3) == 'create') active @endif"
+                       href="{{route('admin.makaleler.create')}}">Makale Oluştur</a>
+                </div>
+            </div>
         </li>
 
         <!-- Divider -->
