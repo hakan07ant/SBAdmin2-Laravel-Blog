@@ -9,7 +9,15 @@
                     <h6 class="m-0 font-weight-bold text-primary">Yeni Kategori Ekle</h6>
                 </div>
                 <div class="card-body">
-                    ddd
+                    <form action="{{route('admin.category.create')}}" method="post">
+                        @csrf
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="category" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-block btn-primary" value="Ekle">
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -20,10 +28,53 @@
                     <h6 class="m-0 font-weight-bold text-primary">@yield('title')</h6>
                 </div>
                 <div class="card-body">
-                    asdasd
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th>Kategori Adı</th>
+                            <th>Makale Adet</th>
+                            <th>Durum</th>
+                            <th>İşlemler</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($categories as $category)
+                            <tr>
+                                <td>{{$category->name}}</td>
+                                <td>{{$category->articleCount()}}</td>
+                                <td><input class="swichButon" ceyegory-id="{{$category->id}}" type="checkbox"
+                                           @if($category->status==1) checked @endif data-toggle="toggle"
+                                           data-on="<i class='fa fa-play'></i> Aktif"
+                                           data-off="<i class='fa fa-play'></i> Pasif"
+                                           data-onstyle="success" data-offstyle="danger"
+                                    ></td>
+                                <td nowrap="">
+
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
 @endsection
+@section('css')
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+@endsection
+@section('js')
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 
+    <script>
+        $(function() {
+            $('.swichButon').change(function() {
+
+                id = $(this)[0].getAttribute('ceyegory-id');
+                statu = $(this).prop('checked');
+
+                $.get("{{route('admin.category.switch')}}", {id:id, statu:statu}, function(data, status){});
+            })
+        })
+    </script>
+@endsection

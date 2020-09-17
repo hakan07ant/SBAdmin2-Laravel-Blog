@@ -16,15 +16,19 @@ Route::prefix('admin')->name('admin.')->middleware('isAdmin')->group(function ()
     Route::get('panel', 'Back\Dashboard@index')->name('dashboard');
 
     //MAKALE ROUTE'S
+
     Route::get('makaleler/SilinenMakaleler','Back\ArticleController@silinenler')->name('trashed.article');
     Route::resource('makaleler', 'Back\ArticleController');
-    Route::get('/switch','Back\ArticleController@switch')->name('switch');
+    Route::get('/switch','Back\ArticleController@switch')->name('article.switch');
     Route::get('/deleteArticle/{id}','Back\ArticleController@delete')->name('article.delete');
     Route::get('/deleteArticleHard/{id}','Back\ArticleController@hardDelete')->name('article.hardDelete');
     Route::get('/recoveryArticle/{id}','Back\ArticleController@recovery')->name('article.recovery');
 
     //KATEGORI ROUTE'S
     Route::get('kategoriler','Back\CategoryController@index')->name('category.index');
+    Route::post('kategoriler/create','Back\CategoryController@create')->name('category.create');
+    Route::get('/switch','Back\CategoryController@switch')->name('category.switch');
+
 
     //CIKIS ROUTE'S
     Route::get('cikis', 'Back\AuthController@logout')->name('logout');
