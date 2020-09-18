@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Back;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 use App\Models\Article;
 use App\Models\Category;
-use Illuminate\Support\Facades\File;
 
 
 class ArticleController extends Controller
@@ -22,7 +22,7 @@ class ArticleController extends Controller
         return view('back.articles.index', compact('articles'));
     }
 
-    public function surumSwitch(Request $request)
+    public function durumSwitch(Request $request)
     {
         $article = Article::findOrFail($request->id);
         $article->status = $request->statu == 'true' ? 1 : 0;
@@ -126,8 +126,6 @@ class ArticleController extends Controller
         $article->save();
         toastr()->success('Başarılı.', 'Makale Başarı ile güncellendi.');
         return redirect()->route('admin.makaleler.index');
-
-
     }
 
     /**
@@ -166,7 +164,6 @@ class ArticleController extends Controller
         Article::onlyTrashed()->find($id)->restore();
         toastr()->success('Başarılı.', 'Silme İşlemi Geri Alındı');
         return redirect()->route('admin.trashed.article');
-
     }
 
     public function destroy($id)

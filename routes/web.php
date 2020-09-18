@@ -32,6 +32,17 @@ Route::prefix('admin')->name('admin.')->middleware('isAdmin')->group(function ()
     Route::post('kategori/guncelle','Back\CategoryController@guncelle')->name('category.update');
     Route::post('kategori/sil','Back\CategoryController@sil')->name('category.sil');
 
+    //SAYFALAR ROUTE'S
+    Route::get('/switchPage','Back\PagesController@durumSwitch')->name('DurumSwitchPage');
+    Route::get('sayfalar/SilinenSayfa','Back\PagesController@silinenler')->name('trashed.page');
+    Route::resource('sayfalar', 'Back\PagesController');
+    Route::get('/deleteSayfa/{id}','Back\PagesController@delete')->name('sayfa.delete');
+    Route::get('/deleteArticleHard/{id}','Back\PagesController@hardDelete')->name('sayfa.hardDelete');
+    Route::get('/recoveryArticle/{id}','Back\PagesController@recovery')->name('sayfa.recovery');
+    Route::get('/sayfa/sirala','Back\PagesController@sirala')->name('sayfa.sirala');
+
+
+
 
 
     //CIKIS ROUTE'S

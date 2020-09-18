@@ -13,8 +13,8 @@ class PageSeeder extends Seeder
     public function run()
     {
         $pages = ['Hakkımızda', 'Kariyer', 'Vizyonumuz', 'Misyonumuz'];
+        $count=1;
         foreach ($pages as $page) {
-            $count=1;
             DB::table('pages')->insert([
                 'title' => $page,
                 'slug' => str_slug($page),
