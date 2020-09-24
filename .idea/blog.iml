@@ -112,5 +112,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="PapelSPA" />
+    <orderEntry type="module" module-name="JetstreamLogin" />
   </component>
 </module>

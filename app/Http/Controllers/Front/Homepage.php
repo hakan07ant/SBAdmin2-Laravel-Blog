@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Front;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator;
+use Mail;
 
 //Models
 use App\Models\Article;
@@ -74,12 +75,25 @@ class Homepage extends Controller
             return redirect()->route('contact')->withErrors($validate)->withInput();
         }
 
+        Mail::send([],[], function ($message) use ($request){
+            $message->from('iletisim@hakanefendi.com','Blog Sitesi');
+            $message->to('iletisim@hakanefendi.com');
+            $message->setBody('Mesajı gönderen: '.$request->name.'<br>
+            Mesajı Gönderen Mail: '.$request->email.'<br>
+            Mesajı Konusu: '.$request->topic.'<br>
+            Mesajı : '.$request->message.'<br>
+            Tarih : '.now().'<br>','text/html');
+            $message->subject($request->name.' mesaj gonderdi');
+        });
+
+        /*
         $contact = new Contact;
         $contact->name = $request->name;
         $contact->email = $request->email;
         $contact->topic = $request->topic;
         $contact->message = $request->message;
         $contact->save();
+*/
 
         return redirect()->route('contact')->with('success', 'Mesajınız tarafımıza iletildi. Teşekkür ederiz.');
 
