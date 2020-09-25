@@ -12,6 +12,7 @@ use App\Models\Article;
 use App\Models\Category;
 use App\Models\Page;
 use App\Models\Contact;
+use App\Models\Config;
 
 class Homepage extends Controller
 {
@@ -19,6 +20,11 @@ class Homepage extends Controller
     {
         view()->share('pages', Page::orderBy('order', 'ASC')->get());
         view()->share('categories', Category::inRandomOrder()->get());
+        view()->share('config', Config::find(1));
+        if (Config::find(1)->active == 0) {
+            return redirect()->to('sitebakimda')->send();
+        }
+
     }
 
     public function index()
@@ -75,15 +81,15 @@ class Homepage extends Controller
             return redirect()->route('contact')->withErrors($validate)->withInput();
         }
 
-        Mail::send([],[], function ($message) use ($request){
-            $message->from('iletisim@hakanefendi.com','Blog Sitesi');
+        Mail::send([], [], function ($message) use ($request) {
+            $message->from('iletisim@hakanefendi.com', 'Blog Sitesi');
             $message->to('iletisim@hakanefendi.com');
-            $message->setBody('Mesajı gönderen: '.$request->name.'<br>
-            Mesajı Gönderen Mail: '.$request->email.'<br>
-            Mesajı Konusu: '.$request->topic.'<br>
-            Mesajı : '.$request->message.'<br>
-            Tarih : '.now().'<br>','text/html');
-            $message->subject($request->name.' mesaj gonderdi');
+            $message->setBody('Mesajı gönderen: ' . $request->name . '<br>
+            Mesajı Gönderen Mail: ' . $request->email . '<br>
+            Mesajı Konusu: ' . $request->topic . '<br>
+            Mesajı : ' . $request->message . '<br>
+            Tarih : ' . now() . '<br>', 'text/html');
+            $message->subject($request->name . ' mesaj gonderdi');
         });
 
         /*
