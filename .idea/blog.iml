@@ -113,5 +113,6 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="PapelSPA" />
     <orderEntry type="module" module-name="JetstreamLogin" />
+    <orderEntry type="module" module-name="simple-blog-laravel" />
   </component>
 </module>
