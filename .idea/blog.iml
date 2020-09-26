@@ -114,5 +114,6 @@
     <orderEntry type="module" module-name="PapelSPA" />
     <orderEntry type="module" module-name="JetstreamLogin" />
     <orderEntry type="module" module-name="simple-blog-laravel" />
+    <orderEntry type="module" module-name="laravel-vue" />
   </component>
 </module>
