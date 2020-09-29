@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/blog.iml" filepath="$PROJECT_DIR$/.idea/blog.iml" />
       <module fileurl="file://$PROJECT_DIR$/../laravel-vue/.idea/laravel-vue.iml" filepath="$PROJECT_DIR$/../laravel-vue/.idea/laravel-vue.iml" />
       <module fileurl="file://$PROJECT_DIR$/../simple-blog-laravel/.idea/simple-blog-laravel.iml" filepath="$PROJECT_DIR$/../simple-blog-laravel/.idea/simple-blog-laravel.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../turuncuk/.idea/turuncuk.iml" filepath="$PROJECT_DIR$/../turuncuk/.idea/turuncuk.iml" />
     </modules>
   </component>
 </project>
